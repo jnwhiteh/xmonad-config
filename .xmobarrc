@@ -1,0 +1,19 @@
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Network "eth0" ["-t", "↓<rx> ↑<tx>", "-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Wireless "wlan0" ["-t", "<essid> <quality>%"] 10
+                    , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run CpuFreq ["-t", "<cpu0>", "-L", "0", "-H", "2", "-l", "lightblue", "-n","white", "-h", "red"] 50
+                    , Run ThermalZone 0 ["-t", "<temp>°C"] 30
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run StdinReader
+                    , Run Battery ["-t","<leftbar> (<timeleft>)", "--", "-c", "energy_full"] 100
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader%} {%cpu% @ %cpufreq% (%thermal0%) | %eth0% | %wlan0wi% | %battery% | <fc=#ee9a00>%date%</fc>"
+       }

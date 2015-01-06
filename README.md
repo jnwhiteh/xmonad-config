@@ -1,4 +1,4 @@
 xmonad-config
 =============
 
-Xmonad configuration
+My XMonad and XMobar configuration
